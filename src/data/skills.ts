@@ -2,9 +2,11 @@
 
 export const skills = {
     languages: [
+        "C++",
         "Python",
         "JavaScript",
-        "TypeScript",
+        "Dart",
+        "SQL",
     ] as string[],
 
     frontend: [
@@ -21,22 +23,34 @@ export const skills = {
         "FastAPI",
     ] as string[],
 
+    databases: [
+        "PostgreSQL",
+        "Redis",
+        "MySQL",
+        "Firebase",
+    ] as string[],
+
     cloud: [
         "AWS",
         "Azure",
+        "GCP",
         "Docker",
     ] as string[],
 
-    tools: [
-        "Git",
-        "Postman",
-        "VS Code",
-        "Linux",
-    ] as string[],
-
-    ml: [
+    ai: [
+        "Vertex AI",
         "PyTorch",
         "OpenCV",
         "OCR",
+        "Claude",
+        "Hermes",
+        "OpenClaw",
+        "Prompt Engineering",
+    ] as string[],
+
+    tools: [
+        "Git/GitHub",
+        "DSA",
+        "Problem Solving",
     ] as string[],
 };

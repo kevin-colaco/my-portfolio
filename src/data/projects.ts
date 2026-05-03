@@ -6,34 +6,46 @@ export type Project = {
     tech: string[];
     link?: string; // optional live URL
     repo?: string; // repo URL (GitHub)
+    status?: string;
 };
 
 export const projects: Project[] = [
     {
         title: "Smart Marksheet Scanner",
         description:
-            "Full-stack OCR automation system (SSIP Hackathon winner) that extracts and validates marksheets with 95%+ accuracy. Deployed at CHARUSAT University.",
+            "Led a 5-member team to build a full-stack OCR system that won the SSIP Hackathon and validates marksheets with 95%+ accuracy for ACPDC and Charotar University.",
         highlights: [
-            "Led a 5-member team",
+            "5-member team",
             "95%+ OCR accuracy",
-            "Automated validation and reports in production"
+            "Active use at Charotar University"
         ],
         tech: ["Python (OCR)", "React", "FastAPI/Django", "Postgres"],
         repo: "https://github.com/DeV-Parekh/Smart_Marksheet_Scanner"
+    },
+    {
+        title: "Agentic Coding Assistant",
+        description:
+            "Built a modular agentic coding system using Claude Code, Hermes, and OpenClaw to automate planning, code generation, and review workflows.",
+        highlights: [
+            "Cut repetitive development cycles by 50%",
+            "Self-verification improved reliability by 35%"
+        ],
+        tech: ["Claude Code", "Hermes", "OpenClaw", "Automation"],
+        status: "Private / Internal"
     },
     {
         title: "GPT from Scratch",
         description:
             "Implemented a transformer/GPT model from scratch using Python and PyTorch (multi-head attention, positional encoding, training loops).",
         highlights: ["Architecture docs", "Tokenization and training experiments"],
-        tech: ["Python", "PyTorch", "Numpy"],
+        tech: ["Python", "PyTorch", "NumPy"],
         repo: "https://github.com/kevin-colaco/Transformer"
     },
     {
         title: "RTOCR (In Progress)",
         description:
-            "Vision-assist device to help visually impaired users — real-time object/text recognition leveraging Azure AI services.",
-        tech: ["Azure AI", "Python", "OpenCV", "OCR"],
+            "Vision-assist device for visually impaired users using Azure AI, Computer Vision, and OCR with real-time object and text recognition.",
+        tech: ["Azure AI", "Computer Vision", "Python", "OpenCV", "OCR"],
         repo: "https://github.com/mvp-corporation/rtocr-fe"
     }
 ];

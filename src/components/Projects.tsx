@@ -16,7 +16,7 @@ export default function Projects() {
                                     <div className="text-xs text-slate-400 mt-1">{p.tech.join(" • ")}</div>
                                 </div>
 
-                                <div className="flex gap-2">
+                                <div className="flex gap-2 items-center">
                                     {p.repo && (
                                         <a
                                             href={p.repo}
@@ -43,6 +43,12 @@ export default function Projects() {
                                         >
                                             Live
                                         </a>
+                                    )}
+
+                                    {p.status && (
+                                        <span className="rounded-full border px-2 py-1 text-xs text-slate-500">
+                                            {p.status}
+                                        </span>
                                     )}
                                 </div>
                             </div>

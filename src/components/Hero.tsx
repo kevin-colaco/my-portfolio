@@ -35,7 +35,7 @@ export default function Hero() {
                         </h1>
 
                         <p className="lead mt-4">
-                            Full-stack engineer — I build reliable backend services and clean frontend experiences. Specializing in Python, React/Next.js, cloud services, and production ML/OCR systems.
+                            Full-stack engineer — I build reliable backend systems, polished frontend experiences, and AI/automation tools. Specializing in Python, React/Next.js, cloud services, and production ML/OCR systems.
                         </p>
 
                         <div className="mt-6 flex flex-wrap gap-3">
@@ -84,15 +84,15 @@ export default function Hero() {
                     <div className="lg:col-span-5">
                         <div className="glass p-6 card">
                             <div className="text-sm text-slate-500">Quick facts</div>
-                            <h3 className="mt-2 text-lg font-semibold">Python · Next.js · PyTorch</h3>
-                            <p className="mt-2 text-sm">Experienced building backend systems, shipping frontend features, and leading ML/OCR projects into production.</p>
+                            <h3 className="mt-2 text-lg font-semibold">Python · Next.js · Vertex AI</h3>
+                            <p className="mt-2 text-sm">Experienced building backend systems, shipping frontend features, and delivering AI/automation work into production.</p>
 
                             <div className="mt-4 flex flex-wrap gap-2">
                                 <span className="quick-badge">Python</span>
-                                <span className="quick-badge">NextJS</span>
-                                <span className="quick-badge">AWS</span>
-                                <span className="quick-badge">Azure</span>
-                                <span className="quick-badge">DSA</span>
+                                <span className="quick-badge">Next.js</span>
+                                <span className="quick-badge">Vertex AI</span>
+                                <span className="quick-badge">Azure AI</span>
+                                <span className="quick-badge">GCP</span>
                             </div>
                         </div>
                     </div>

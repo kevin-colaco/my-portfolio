@@ -34,18 +34,45 @@ export default function Skills() {
                 </div>
 
                 <div className="skill-card">
-                    <h3 className="font-medium">Backend & DevOps</h3>
+                    <h3 className="font-medium">Backend</h3>
                     <div className="mt-2">
-                        {skills.backend.concat(skills.cloud).map((s) => (
+                        {skills.backend.map((s) => (
                             <SkillChip key={s}>{s}</SkillChip>
                         ))}
                     </div>
                 </div>
 
                 <div className="skill-card">
-                    <h3 className="font-medium">ML / Tools</h3>
+                    <h3 className="font-medium">Databases</h3>
                     <div className="mt-2">
-                        {skills.ml.concat(skills.tools).map((s) => (
+                        {skills.databases.map((s) => (
+                            <SkillChip key={s}>{s}</SkillChip>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="skill-card">
+                    <h3 className="font-medium">Cloud / DevOps</h3>
+                    <div className="mt-2">
+                        {skills.cloud.map((s) => (
+                            <SkillChip key={s}>{s}</SkillChip>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="skill-card">
+                    <h3 className="font-medium">AI / Agentic</h3>
+                    <div className="mt-2">
+                        {skills.ai.map((s) => (
+                            <SkillChip key={s}>{s}</SkillChip>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="skill-card sm:col-span-2">
+                    <h3 className="font-medium">Tools</h3>
+                    <div className="mt-2">
+                        {skills.tools.map((s) => (
                             <SkillChip key={s}>{s}</SkillChip>
                         ))}
                     </div>

@@ -1,8 +1,8 @@
 export const siteMeta = {
     name: "Kevin Colaco",
-    title: "Kevin Colaco — Python Developer & Full-Stack Engineer",
+    title: "Kevin Colaco — Python Developer, Full-Stack Engineer & AI Builder",
     description:
-        "Passionate Python developer with experience shipping backend systems and full-stack features for high-traffic platforms. Skilled in Python, React/Next.js, cloud (AWS/Azure), and ML/vision.",
+        "Python-first full-stack engineer building reliable backend systems, polished frontend experiences, and AI/automation tools for production use.",
     siteUrl: "https://kevincolaco.github.io",
     resumeUrl: "/resume.pdf",
     socials: {

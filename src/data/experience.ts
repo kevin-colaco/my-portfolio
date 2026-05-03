@@ -14,22 +14,20 @@ export const experience: ExperienceItem[] = [
         start: "Jan 2024",
         end: "Present",
         bullets: [
-            "Core developer on a high-traffic U.S. healthcare e-commerce platform; led end-to-end features from design to production.",
-            "Delivered automated prescription refills and dependent-prescription support, increasing daily order volume by 2,000+.",
-            "Improved code quality, maintainability and performance (~30%) via refactoring and reviews.",
-            "Collaborated cross-functionally to ensure stable production releases and smooth sprint execution."
+            "Core developer on a high-traffic U.S. healthcare e-commerce platform; led delivery of automated prescription refills and dependent prescription support, boosting daily order volume by 2,000+ with zero critical post-release issues.",
+            "Built a Customer Support Automation platform with Vertex AI-powered summarization, resolving support queries 67% faster and significantly reducing manual triage effort.",
+            "Improved overall platform performance by 30% through proactive code reviews, API optimization, and backend refactoring in Python and React/Next.js."
         ],
-        tech: ["Python", "Django/Flask/FastAPI", "React/Next.js", "Docker", "AWS/Azure"]
+        tech: ["Python", "React/Next.js", "Vertex AI", "AWS/Azure", "GCP"]
     },
     {
-        role: "Flutter Intern",
+        role: "Python Intern",
         company: "SOLITS – India",
         start: "Jan 2023",
         end: "Jul 2023",
         bullets: [
-            "Built a Hostel Management mobile app covering room allocation, billing and student records.",
-            "Delivered an intuitive UI and workflow automations that improved admin efficiency."
+            "Built a Hostel Management System for Nisarg Hostel using Python and Django, automating room allocation, billing, and student records — reducing administrative staff workload by 40% and eliminating manual data entry errors."
         ],
-        tech: ["Flutter", "Dart", "SQLite", "REST APIs"]
+        tech: ["Python", "Django", "SQLite", "REST APIs"]
     }
 ];
