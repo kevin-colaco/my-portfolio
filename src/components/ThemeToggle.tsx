@@ -1,45 +1,65 @@
 // src/components/ThemeToggle.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+
+type Theme = "light" | "dark";
+
+const THEME_CHANGE_EVENT = "theme-change";
+const themeQuery = "(prefers-color-scheme: dark)";
+
+function getThemeSnapshot(): Theme {
+    if (typeof window === "undefined") return "light";
+
+    try {
+        const stored = localStorage.getItem("theme");
+        if (stored === "dark" || stored === "light") return stored;
+    } catch {
+        // ignore storage errors and fall back to system preference
+    }
+
+    return window.matchMedia(themeQuery).matches ? "dark" : "light";
+}
+
+function subscribe(onStoreChange: () => void) {
+    if (typeof window === "undefined") return () => undefined;
+
+    const mediaQuery = window.matchMedia(themeQuery);
+    const handleChange = () => onStoreChange();
+
+    window.addEventListener("storage", handleChange);
+    window.addEventListener(THEME_CHANGE_EVENT, handleChange);
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+        window.removeEventListener("storage", handleChange);
+        window.removeEventListener(THEME_CHANGE_EVENT, handleChange);
+        mediaQuery.removeEventListener("change", handleChange);
+    };
+}
+
+function applyTheme(theme: Theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+}
 
 export default function ThemeToggle() {
-    const [theme, setTheme] = useState<"light" | "dark" | null>(null);
+    const theme = useSyncExternalStore<Theme>(subscribe, getThemeSnapshot, () => "light");
 
-    // initialize theme from localStorage or system preference
     useEffect(() => {
-        try {
-            const stored = localStorage.getItem("theme");
-            if (stored === "dark" || stored === "light") {
-                setTheme(stored);
-                document.documentElement.setAttribute("data-theme", stored);
-                if (stored === "dark") document.documentElement.classList.add("dark");
-                else document.documentElement.classList.remove("dark");
-                return;
-            }
-
-            // no stored preference → use system preference
-            const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-            const initial = prefersDark ? "dark" : "light";
-            setTheme(initial);
-            document.documentElement.setAttribute("data-theme", initial);
-            if (initial === "dark") document.documentElement.classList.add("dark");
-            else document.documentElement.classList.remove("dark");
-        } catch (err) {
-            // ignore (server-side safety)
-            console.warn("Theme init error:", err);
-        }
-    }, []);
+        applyTheme(theme);
+    }, [theme]);
 
     function toggle() {
         const next = theme === "dark" ? "light" : "dark";
-        setTheme(next);
+
         try {
             localStorage.setItem("theme", next);
-        } catch { }
-        if (next === "dark") document.documentElement.classList.add("dark");
-        else document.documentElement.classList.remove("dark");
-        document.documentElement.setAttribute("data-theme", next);
+        } catch {
+            // ignore storage errors
+        }
+
+        window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
     }
 
     return (
@@ -49,7 +69,7 @@ export default function ThemeToggle() {
             aria-label="Toggle theme"
             title="Toggle theme"
         >
-            {theme === "dark" ? "🌙" : theme === "light" ? "☀️" : "Toggle"}
+            {theme === "dark" ? "🌙" : "☀️"}
         </button>
     );
 }

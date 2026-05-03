@@ -60,7 +60,7 @@ export default function Hero() {
                         </div>
 
                         <div className="mt-6 flex gap-3">
-                            <IconButton href="https://www.linkedin.com/in/kevin-colaco-kc" label="LinkedIn">
+                            <IconButton href={siteMeta.socials.linkedin} label="LinkedIn">
                                 {/* linkedin icon */}
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
                                     <path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4v-12h4v2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -70,7 +70,7 @@ export default function Hero() {
                                 <span className="text-sm">LinkedIn</span>
                             </IconButton>
 
-                            <IconButton href="https://www.github.com/kevin-colaco" label="GitHub">
+                            <IconButton href={siteMeta.socials.github} label="GitHub">
                                 {/* github icon */}
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
                                     <path d="M9 19c-5 1-5-2-7-2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />

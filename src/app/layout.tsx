@@ -1,6 +1,7 @@
 // src/app/layout.tsx
+import Link from "next/link";
 import { ReactNode } from "react";
-import ThemeToggle from "../components/ThemeToggle"; // <-- import the client component
+import ThemeToggle from "../components/ThemeToggle";
 import { siteMeta } from "../data/siteMeta";
 import "./globals.css";
 
@@ -16,9 +17,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <header className="flex items-center justify-between py-6">
             <div>
-              <a href="/" className="text-lg font-semibold">
+              <Link href="/" className="text-lg font-semibold">
                 {siteMeta.name}
-              </a>
+              </Link>
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />

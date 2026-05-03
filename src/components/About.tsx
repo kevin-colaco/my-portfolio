@@ -11,9 +11,9 @@ export default function About() {
                         <div className="mt-4">
                             <div className="card">
                                 <p className="text-sm" style={{ color: "var(--text)" }}>
-                                    I'm a Python-first full-stack engineer who ships reliable backend systems and clean frontend experiences.
+                                    I&apos;m a Python-first full-stack engineer who ships reliable backend systems and clean frontend experiences.
                                     I like to design services with observability and testability in mind, and move fast without sacrificing stability.
-                                    I’ve shipped features for healthcare e-commerce platforms, built OCR systems in production, and implemented transformer models for experimentation.
+                                    I&apos;ve shipped features for healthcare e-commerce platforms, built OCR systems in production, and implemented transformer models for experimentation.
                                 </p>
 
                                 <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
