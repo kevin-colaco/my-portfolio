@@ -1,12 +1,24 @@
 // src/data/skills.ts
+// Kept in sync with the Skills section of resume/resume.tex.
 
 export const skills = {
     languages: [
-        "C++",
         "Python",
+        "TypeScript",
         "JavaScript",
-        "Dart",
         "SQL",
+        "C++",
+        "Dart",
+    ] as string[],
+
+    backend: [
+        "Django",
+        "FastAPI",
+        "Flask",
+        "REST APIs",
+        "GraphQL",
+        "Celery",
+        "Microservices",
     ] as string[],
 
     frontend: [
@@ -17,16 +29,10 @@ export const skills = {
         "CSS",
     ] as string[],
 
-    backend: [
-        "Django",
-        "Flask",
-        "FastAPI",
-    ] as string[],
-
-    databases: [
+    data: [
         "PostgreSQL",
-        "Redis",
         "MySQL",
+        "Redis",
         "Firebase",
     ] as string[],
 
@@ -35,22 +41,38 @@ export const skills = {
         "Azure",
         "GCP",
         "Docker",
+        "Kubernetes",
+        "Linux",
     ] as string[],
 
     ai: [
+        "LLMs",
+        "RAG",
+        "Embeddings",
         "Vertex AI",
+        "Claude Code",
+        "Hermes",
+        "OpenClaw",
         "PyTorch",
         "OpenCV",
         "OCR",
-        "Claude",
-        "Hermes",
-        "OpenClaw",
-        "Prompt Engineering",
     ] as string[],
 
-    tools: [
+    practices: [
+        "Unit Testing (pytest)",
+        "CI/CD",
+        "Agile/Scrum",
+        "Code Review",
         "Git/GitHub",
-        "DSA",
-        "Problem Solving",
     ] as string[],
+};
+
+export const skillLabels: Record<keyof typeof skills, string> = {
+    languages: "Languages",
+    backend: "Backend",
+    frontend: "Frontend",
+    data: "Databases",
+    cloud: "Cloud / DevOps",
+    ai: "AI / Agentic",
+    practices: "Practices",
 };

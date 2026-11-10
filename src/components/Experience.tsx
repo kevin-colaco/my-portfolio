@@ -1,65 +1,47 @@
 // src/components/Experience.tsx
 import { experience } from "../data/experience";
+import { Section, Tag } from "./ui";
 
 export default function Experience() {
     return (
-        <section id="experience" className="pt-8">
-            <div className="container">
-                <h2 className="text-2xl font-semibold">Experience</h2>
+        <Section id="work" index="01" title="Work">
+            <ol className="space-y-12">
+                {experience.map((exp) => (
+                    <li key={`${exp.company}-${exp.role}`} className="grid gap-4 sm:grid-cols-[10rem_1fr]">
+                        <p className="font-mono text-xs uppercase tracking-wider text-muted sm:pt-1.5">
+                            {exp.start} to {exp.end ?? "Present"}
+                        </p>
 
-                <div className="mt-6 space-y-6">
-                    {experience.map((exp) => (
-                        <div key={exp.role} className="card">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <div className="text-lg font-semibold flex items-center gap-2">
-                                        {exp.role}
-                                    </div>
+                        <div>
+                            <h3 className="text-xl font-bold">
+                                {exp.role} ·{" "}
+                                {exp.url ? (
+                                    <a href={exp.url} target="_blank" rel="noreferrer" className="text-accent hover:underline underline-offset-4">
+                                        {exp.company}
+                                    </a>
+                                ) : (
+                                    exp.company
+                                )}
+                            </h3>
+                            <p className="font-mono text-xs uppercase tracking-wider text-muted">{exp.location}</p>
 
-                                    {/* clickable company link */}
-                                    {exp.company === "Codal – India" ? (
-                                        <a
-                                            href="https://www.codal.com"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-sm accent"
-                                        >
-                                            Codal – India
-                                        </a>
-                                    ) : exp.company === "SOLITS – India" ? (
-                                        <a
-                                            href="https://solits.com"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-sm accent"
-                                        >
-                                            SOLITS – India
-                                        </a>
-                                    ) : (
-                                        <div className="text-sm text-slate-500">{exp.company}</div>
-                                    )}
-                                </div>
-
-                                <div className="text-sm text-slate-500">
-                                    {exp.start} — {exp.end ?? "Present"}
-                                </div>
-                            </div>
-
-                            <ul className="mt-3 list-disc ml-5 text-sm">
-                                {exp.bullets.map((b, i) => (
-                                    <li key={i}>{b}</li>
+                            <ul className="mt-4 list-disc space-y-2 pl-5 marker:text-muted">
+                                {exp.bullets.map((b) => (
+                                    <li key={b}>{b}</li>
                                 ))}
                             </ul>
 
                             {exp.tech && (
-                                <div className="mt-3 text-sm text-slate-600">
-                                    <strong>Tech:</strong> {exp.tech.join(", ")}
+                                <div className="mt-4 flex flex-wrap gap-2">
+                                    {exp.tech.map((t) => (
+                                        <Tag key={t}>{t}</Tag>
+                                    ))}
                                 </div>
                             )}
                         </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+                    </li>
+                ))}
+            </ol>
+        </Section>
     );
 }

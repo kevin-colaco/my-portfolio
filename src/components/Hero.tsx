@@ -1,102 +1,62 @@
 // src/components/Hero.tsx
 import { siteMeta } from "../data/siteMeta";
-
-function IconButton({
-    href,
-    label,
-    children
-}: {
-    href: string;
-    label: string;
-    children: React.ReactNode;
-}) {
-    return (
-        <a
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm border shadow-sm hover:translate-y-[-2px] transition-transform"
-            aria-label={label}
-        >
-            {children}
-            <span className="sr-only">{label}</span>
-        </a>
-    );
-}
+import { MonoLink } from "./ui";
 
 export default function Hero() {
     return (
-        <section id="hero" className="pt-10">
-            <div className="container">
-                <div className="grid gap-8 items-center lg:grid-cols-12">
-                    <div className="lg:col-span-7">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-                            Kevin Colaco
-                        </h1>
+        <section id="hero" className="pt-16 sm:pt-24">
+            <p className="font-mono text-xs uppercase tracking-wider text-accent">{siteMeta.role}</p>
 
-                        <p className="lead mt-4">
-                            Full-stack engineer — I build reliable backend systems, polished frontend experiences, and AI/automation tools. Specializing in Python, React/Next.js, cloud services, and production ML/OCR systems.
-                        </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-6xl">
+                {siteMeta.headline}
+            </h1>
 
-                        <div className="mt-6 flex flex-wrap gap-3">
-                            <a href="#projects" className="btn">View projects</a>
-                            <a href="#contact" className="btn secondary">Contact</a>
+            <p className="mt-6 max-w-2xl text-lg">{siteMeta.intro}</p>
 
-                            {/* Download resume as a more prominent outline button */}
-                            <a
-                                href={siteMeta.resumeUrl}
-                                download
-                                className="inline-flex items-center gap-2 rounded-md border px-4 py-2 font-medium hover:shadow-lg transition"
-                                aria-label="Download resume"
-                            >
-                                {/* small download icon */}
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                                    <path d="M12 3v12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M8 11l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M21 21H3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                                <span>Download resume</span>
-                            </a>
-                        </div>
-
-                        <div className="mt-6 flex gap-3">
-                            <IconButton href={siteMeta.socials.linkedin} label="LinkedIn">
-                                {/* linkedin icon */}
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                                    <path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4v-12h4v2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                                    <rect x="2" y="9" width="4" height="12" rx="1" stroke="currentColor" strokeWidth="1.4" />
-                                    <circle cx="4" cy="5" r="2" stroke="currentColor" strokeWidth="1.4" />
-                                </svg>
-                                <span className="text-sm">LinkedIn</span>
-                            </IconButton>
-
-                            <IconButton href={siteMeta.socials.github} label="GitHub">
-                                {/* github icon */}
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                                    <path d="M9 19c-5 1-5-2-7-2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M20 18v-2a4 4 0 00-1-3c2-1 3-3 3-5a4 4 0 00-1-3s-1 0-4 2a11 11 0 00-8 0c-3-2-4-2-4-2a4 4 0 00-1 3c0 2 1 4 3 5a4 4 0 00-1 3v2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                                <span className="text-sm">GitHub</span>
-                            </IconButton>
-                        </div>
-                    </div>
-
-                    <div className="lg:col-span-5">
-                        <div className="glass p-6 card">
-                            <div className="text-sm text-slate-500">Quick facts</div>
-                            <h3 className="mt-2 text-lg font-semibold">Python · Next.js · Vertex AI</h3>
-                            <p className="mt-2 text-sm">Experienced building backend systems, shipping frontend features, and delivering AI/automation work into production.</p>
-
-                            <div className="mt-4 flex flex-wrap gap-2">
-                                <span className="quick-badge">Python</span>
-                                <span className="quick-badge">Next.js</span>
-                                <span className="quick-badge">Vertex AI</span>
-                                <span className="quick-badge">Azure AI</span>
-                                <span className="quick-badge">GCP</span>
-                            </div>
-                        </div>
-                    </div>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <a
+                    href="#projects"
+                    className="rounded-full bg-accent px-5 py-2.5 font-medium text-bg transition-opacity hover:opacity-90"
+                >
+                    View projects
+                </a>
+                <a
+                    href={`mailto:${siteMeta.email}`}
+                    className="rounded-full border border-line px-5 py-2.5 font-medium text-heading transition-colors hover:border-accent hover:text-accent"
+                >
+                    Email me
+                </a>
+                <div className="flex gap-5">
+                    <MonoLink href={siteMeta.socials.github} external>GitHub ↗</MonoLink>
+                    <MonoLink href={siteMeta.socials.linkedin} external>LinkedIn ↗</MonoLink>
                 </div>
+            </div>
+
+            <div className="mt-16 border-t border-line pt-6">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                    <h2 className="font-mono text-xs font-normal uppercase tracking-wider text-accent">
+                        {siteMeta.impact.heading}
+                    </h2>
+                    <p className="text-sm text-muted">{siteMeta.impact.context}</p>
+                </div>
+
+                <dl className="mt-2 grid sm:grid-cols-3">
+                    {siteMeta.metrics.map((m, i) => (
+                        <div
+                            key={m.label}
+                            className={`flex flex-col py-6 sm:px-6 ${i === 0 ? "sm:pl-0" : "border-t border-line sm:border-t-0 sm:border-l"}`}
+                        >
+                            {/* Label is the term, value the description; order flips visually so the number leads. */}
+                            <dt className="order-2 mt-1 font-medium text-heading">{m.label}</dt>
+                            <dd className="order-1 text-4xl font-bold text-heading">{m.value}</dd>
+                            <dd className="order-3 mt-2 text-sm text-muted">{m.detail}</dd>
+                        </div>
+                    ))}
+                </dl>
+
+                <a href="#work" className="font-mono text-xs uppercase tracking-wider text-accent underline-offset-4 hover:underline">
+                    See the work behind these →
+                </a>
             </div>
         </section>
     );

@@ -1,21 +1,17 @@
 import About from "../components/About";
-import ContactForm from "../components/ContactForm";
-import Education from "../components/Education";
+import Contact from "../components/Contact";
 import Experience from "../components/Experience";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
-import Skills from "../components/Skills";
 
 export default function Home() {
   return (
-    <div className="space-y-20 py-10">
+    <div className="space-y-24 pb-8">
       <Hero />
-      <About />
-      <Skills />
       <Experience />
       <Projects />
-      <Education />
-      <ContactForm />
+      <About />
+      <Contact />
     </div>
   );
 }

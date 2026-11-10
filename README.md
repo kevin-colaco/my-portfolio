@@ -1,50 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kevin Colaco · Portfolio
 
-## Getting Started
+Personal portfolio of Kevin Colaco, a full-stack engineer building Python backends, healthcare e-commerce systems, and AI automation.
 
-First, run the development server:
+**Live:** https://my-portfolio-rho-flame-40.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, fully static output)
+- React 19, TypeScript
+- Tailwind CSS v4 with theme tokens in `src/app/globals.css`
+- DM Sans and DM Mono via `next/font` (self-hosted, no layout shift)
+- Vercel Analytics (cookie-free page views)
+
+## Project layout
+
+```
+src/
+  app/            layout, page, metadata, sitemap, robots, OG image, favicon
+  components/     Header, Hero, Experience, Projects, About, Contact, shared ui
+  data/           all site content (edit these, not the components)
+resume/
+  resume.tex      one-page LaTeX resume (compile in Overleaf)
+public/
+  resume.pdf      the PDF served by the "Resume" links
+scripts/          build wrapper and resume-sync check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Content lives in `src/data/*.ts`. Updating experience, projects, skills, or metrics means editing those files only.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Develop
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Release Checklist
+Open http://localhost:3000.
 
-Before deploying:
+## Release checklist
 
 ```bash
 npm run lint -- --max-warnings=0
+npm run verify:resume
 npm run build
 ```
 
-Then verify:
-- Social links point to the intended LinkedIn/GitHub profiles
-- `/sitemap.xml` only includes real routes
-- `/resume.pdf` downloads correctly
+Then check:
 
-## Learn More
+- `siteUrl` in `src/data/siteMeta.ts` matches the live domain (it drives canonical, Open Graph, sitemap, and robots URLs)
+- `public/resume.pdf` is the latest export of `resume/resume.tex`
+- `src/data/skills.ts` and the resume's Skills section still match
+- Social links point to the right LinkedIn and GitHub profiles
 
-To learn more about Next.js, take a look at the following resources:
+## Updating the resume
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Edit `resume/resume.tex` and compile it in Overleaf.
+2. Confirm it is still one page.
+3. Download the PDF and replace `public/resume.pdf`.

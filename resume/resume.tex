@@ -1,0 +1,280 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1.3 cm, % seperation between body and page edge from the top
+    bottom=1.6 cm, % seperation between body and page edge from the bottom
+    left=1.8 cm, % seperation between body and page edge from the left
+    right=1.8 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Kevin Colaco's CV},
+    pdfauthor={Kevin Colaco},
+    pdfcreator={LaTeX},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.25 cm
+}{
+    % bottom space:
+    0.15 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.06 cm,
+        parsep=0.06 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+% Title on the left, date or link pushed right on the SAME text line (no columns),
+% so ATS parsers read "role, company ... dates" in order.
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+}{
+    \unskip\hfill\secondColumn
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{header}{
+    \centering
+    \linespread{1.5}
+    \vspace*{-0.9cm} % adjust until it looks right
+}{
+\par\kern\topsep
+}
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Kevin Colaco
+
+        \vspace{4 pt}
+
+        \fontsize{12 pt}{12 pt}\selectfont Software Engineer \enspace$|$\enspace Python \enspace$|$\enspace Full Stack
+
+        \vspace{2 pt}
+
+        % \small plus tighter separators keep all five items on one line with full URLs,
+        % which ATS parsers can read as text.
+        \small
+        \mbox{India}%
+        \kern 3.5 pt%
+        \AND%
+        \kern 3.5 pt%
+        \mbox{\hrefWithoutArrow{mailto:kevincolaco.kc@gmail.com}{kevincolaco.kc@gmail.com}}%
+        \kern 3.5 pt%
+        \AND%
+        \kern 3.5 pt%
+        \mbox{+91 97258 19469}%
+        \kern 3.5 pt%
+        \AND%
+        \kern 3.5 pt%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/kevin-colaco-kc/}{linkedin.com/in/kevin-colaco-kc}}%
+        \kern 3.5 pt%
+        \AND%
+        \kern 3.5 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/kevin-colaco}{github.com/kevin-colaco}}%
+
+        \vspace{1 pt}
+
+        \mbox{Portfolio: \hrefWithoutArrow{https://my-portfolio-rho-flame-40.vercel.app}{my-portfolio-rho-flame-40.vercel.app}}%
+    \end{header}
+
+    \vspace{-0.1 cm}
+
+    \begin{onecolentry}
+        Software engineer with nearly 3 years of experience building \textbf{Python} backend services, full-stack features, and AI automation for a high-traffic U.S. healthcare e-commerce platform. Experienced with Django, FastAPI, REST and GraphQL APIs, microservices, React/Next.js with TypeScript, and LLM tooling on GCP Vertex AI.
+    \end{onecolentry}
+
+    \section{Experience}
+
+        \begin{twocolentry}{Jan 2024 – Present}
+            \textbf{Software Engineer}, Codal, India
+        \end{twocolentry}
+
+        \vspace{0.06 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Core developer on a high-traffic U.S. healthcare e-commerce platform; spearheaded delivery of automated prescription refills and dependent prescription support, \textbf{boosting daily order volume by 2,000+} with zero critical post-release issues.
+                \item Implemented \textbf{order routing logic} that directs \textbf{\textasciitilde120 prescription orders per day} across 2 partner pharmacies, with more pharmacies planned.
+                \item Partnered with a third-party pharmacy network to design and build \textbf{Rx management integrations} for transfers and refills, now handling \textbf{4--5 prescription transfers daily (120+ per month)}.
+                \item Created a Customer Support Automation tool with LLM-powered summarization on \textbf{Vertex AI}, \textbf{resolving support queries 67\% faster} and reducing manual triage effort.
+                \item Drove the \textbf{Python 3.9 to 3.12 upgrade} across the entire production codebase.
+                \item Improved overall application performance by \textbf{30\%} through code reviews, REST API optimization, and backend refactoring in Python; shipped customer-facing UI features in React/Next.js.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.15 cm}
+
+        \begin{twocolentry}{Jan 2023 – Jul 2023}
+            \textbf{Python Intern}, SOLITS, India
+        \end{twocolentry}
+
+        \vspace{0.06 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed a Hostel Management System for Nisarg Hostel in Python and Django, automating room allocation, billing, and student records; \textbf{reduced administrative workload by \textasciitilde40\%} and eliminated manual data entry errors.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+        \begin{twocolentry}{\hrefWithoutArrow{https://github.com/DeV-Parekh/Smart_Marksheet_Scanner}{GitHub}}
+            \textbf{Smart Marksheet Scanner} | Python, React, OCR
+        \end{twocolentry}
+
+        \vspace{0.06 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Led a 5-member team to an \textbf{SSIP Hackathon win} with an OCR system that validates student mark sheets at \textbf{95\%+ accuracy} for ACPDC (Govt. of Gujarat); now in active use at Charotar University.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.15 cm}
+
+        \begin{twocolentry}{Private}
+            \textbf{Agentic Coding Assistant} | Claude Code, Hermes, OpenClaw
+        \end{twocolentry}
+
+        \vspace{0.06 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Engineered a modular agentic coding system with skill-based sub-agents and self-verification that automates planning, code generation, and review, \textbf{cutting repetitive development cycles by \textasciitilde50\%} and \textbf{improving output reliability by 35\%}.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.15 cm}
+
+        \begin{twocolentry}{\hrefWithoutArrow{https://github.com/mvp-corporation/rtocr-fe}{GitHub}}
+            \textbf{RTOCR (In Progress)} | Azure AI, Computer Vision, OpenCV
+        \end{twocolentry}
+
+        \vspace{0.06 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developing a vision-assist device for visually impaired users with real-time text and object recognition at \textbf{sub-500ms response time}.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Skills}
+
+        \begin{onecolentry}
+            \textbf{Languages:} Python, TypeScript, JavaScript, SQL, C++, Dart
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{Backend:} Django, FastAPI, Flask, REST APIs, GraphQL, Celery, Microservices
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{Frontend:} React, Next.js, Tailwind CSS, HTML, CSS
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{Data and Cloud:} PostgreSQL, MySQL, Redis, Firebase, AWS, Azure, GCP, Docker, Kubernetes, Linux
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{AI / Agentic:} LLMs, RAG, Embeddings, Vertex AI, Claude Code, Hermes, OpenClaw, PyTorch, OpenCV, OCR
+        \end{onecolentry}
+
+        \vspace{0.1 cm}
+
+        \begin{onecolentry}
+            \textbf{Practices:} Unit Testing (pytest), CI/CD, Agile/Scrum, Code Review, Git
+        \end{onecolentry}
+
+    \section{Education and Certifications}
+
+        \begin{twocolentry}{Jul 2020 – Jun 2024}
+            \textbf{Charotar University of Science and Technology (CSPIT)}, Anand, Gujarat
+        \end{twocolentry}
+
+        \vspace{0.06 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item B.Tech in Computer Science and Engineering; \textbf{CGPA 9.83 / 10}
+                \item Microsoft Certified: Azure AI Fundamentals, Azure Data Fundamentals; NVIDIA: Building Real-Time Video AI Applications
+            \end{highlights}
+        \end{onecolentry}
+
+\end{document}
